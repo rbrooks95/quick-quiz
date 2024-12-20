@@ -1,30 +1,42 @@
 package main
 
 import (
-	"encoding/csv"
+	"bufio"
+	//"encoding/csv"
 	"fmt"
 	"os"
 )
 
 
 func main()  {
-	fd, error := os.Open("questions.csv")
-	fmt.Println("hello")
+// file, err := os.Open("questions.csv")
 
-	if error != nil {
-    fmt.Println(error)
+// if err != nil{
+// 	fmt.Println("there is a problem opening the file")
+// }
+
+// defer file.Close()
+
+// reader := csv.NewReader(file)
+
+// read, err := reader.ReadAll()
+
+// if err != nil {
+// 	fmt.Println("problem reading file")
+// }
+
+// for _, v := range read{
+// 	fmt.Println(v[0],v[1])
+// }
+Input()
 }
 
-fmt.Println("Successfully opened the CSV file")
-defer fd.Close()
-fileRead := csv.NewReader(fd)
-questions,error := fileRead.ReadAll()
 
-if error != nil {
-	fmt.Println(error)
-}
-fmt.Println(questions)
-for i := 0; i < len(questions); i++{
-	fmt.Println(questions[i])
-}
+func Input()  {
+	reader := bufio.NewReader(os.Stdin)
+
+	fmt.Println("Enter text....")
+	text, _ := reader.ReadString('\n')
+
+	fmt.Println("you entered", text)
 }
